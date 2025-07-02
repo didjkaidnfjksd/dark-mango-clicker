@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Dark Mango</title>
+  <style>
+    body {
+      font-family: Rubik, sans-serif;
+      background-color: #fff9e6;
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: lightyellow;
+      border: 2px solid black;
+      color: black;
+    }
+
+    #clickerSection {
+      text-align: center;
+      margin: 50px auto;
+      padding: 20px;
+      width: 600px;
+      background-color: #f0f0f0;
+      border: 2px dashed #aaa;
+      border-radius: 10px;
+    }
+
+    #score {
+      font-size: 32px;
+      margin: 20px 0;
+    }
+
+    #clickButton {
+      padding: 15px 30px;
+      font-size: 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+
+    #clickButton:active {
+      transform: scale(0.95);
+    }
+
+    #shopSection {
+      text-align: center;
+      margin: 30px auto;
+      width: 600px;
+      padding: 20px;
+      background-color: #fff3c4;
+      border: 2px solid #ff9800;
+      border-radius: 10px;
+    }
+
+    #shopSection h2 {
+      margin-bottom: 10px;
+    }
+
+    .upgradeBtn {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: darkorange;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .upgradeBtn:hover {
+      background-color: orangered;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h1><strong>What's a dark mango</strong></h1>
+    <p><strong>A dark mango</strong> activates when you play Blox Fruits at <strong>3 A.M.</strong></p>
+    <p>Dark mangoes are usually <strong>black, or grey.</strong></p>
+
+    <h1>Dark mango health benefits:</h1>
+    <p>
+      Nutrient-rich & antioxidant power<br>
+      A cup (~165 g): ~99 kcal, ≈ 67 % DV Vitamin C, Vitamin A, E, B6, folate, potassium, and more.<br>
+      Loaded with carotenoids, mangiferin, and polyphenols—protecting cells from damage.
+    </p>
+
+    <h1>Where dark mangoes come from:</h1>
+    <p>
+      Found in the Blox Fruits Second Sea and Third Sea. Rare in League of Legends and Warzone. Common in Roblox and Fortnite.
+    </p>
+
+    <h1>How to eat one:</h1>
+    <p>
+      1. Wash it.<br>
+      2. Cut off the “cheeks.”<br>
+      3. Score the flesh in a grid pattern.<br>
+      4. Flip it inside out.<br>
+      5. Scoop out and eat!
+    </p>
+  </div>
+
+  <div id="clickerSection">
+    <h1>Dark Mango Clicker</h1>
+    <div id="score">Score: 0</div>
+    <button id="clickButton">Click the Mango!</button>
+  </div>
+
+  <div id="shopSection">
+    <h2>🛒 Mango Shop Upgrades</h2>
+    <button class="upgradeBtn" onclick="buyUpgrade('goldPeel')">Golden Peel (+1) — Cost: 50</button>
+    <button class="upgradeBtn" onclick="buyUpgrade('fruitFusion')">Fruit Fusion (+5) — Cost: 200</button>
+    <button class="upgradeBtn" onclick="buyUpgrade('coreBoost')">Core Boost (+10) — Cost: 500</button>
+  </div>
+
+  <script>
+    let score = 0;
+    let scorePerClick = 1;
+
+    const scoreDisplay = document.getElementById("score");
+    const button = document.getElementById("clickButton");
+
+    const upgrades = {
+      goldPeel: { cost: 50, value: 1 },
+      fruitFusion: { cost: 200, value: 5 },
+      coreBoost: { cost: 500, value: 10 }
+    };
+
+    button.addEventListener("click", function () {
+      score += scorePerClick;
+      updateScore();
+    });
+
+    function updateScore() {
+      scoreDisplay.textContent = "Score: " + score;
+    }
+
+    function buyUpgrade(type) {
+      const upgrade = upgrades[type];
+      if (score >= upgrade.cost) {
+        score -= upgrade.cost;
+        scorePerClick += upgrade.value;
+        updateScore();
+      } else {
+        alert("Not enough dark mango points!");
+      }
+    }
+  </script>
+
+</body>
+</html>
